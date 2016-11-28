@@ -25,7 +25,7 @@ typedef struct {
 	const chatfunctions_t *func;	///< pointer to I/O functions
 	volatile sys_timer_t *timer;	///< pointer to timer (decremented outside of this function)
 	char *expect;			///< structure containing pointers to strings
-	uint8_t timeout;		///< time to wait for a response (expect)
+	sys_timer_t timeout;		///< time to wait for a response (expect)
 	uint8_t state;			///< handler state
 } chat_t;
 
@@ -52,8 +52,8 @@ void chat_init(chat_t *chat, const chatfunctions_t *func, volatile sys_timer_t *
 /** Starts control data for this chat
 \param1	control type, to be initialized
 \param2 pointer to send string
-\param2 pointer to expect string
-\param3 time to wait (in timer units, depends on system handling)
+\param3 pointer to expect string
+\param4 time to wait (in timer units, depends on system handling)
 \note "Send" strings are sent 'as is'
 \note "Expect" strings have some rules:
 	 'ç' matches any single character, including white space

@@ -85,7 +85,7 @@ void chat_start(chat_t *chat, char *send, char *expect, unsigned int timeout)
 	chat->state = CHAT_SEND;
 	chat->expect = expect;
 	chat->ptr = send;
-	chat->timeout = (time_t) timeout;
+	chat->timeout = (sys_timer_t) timeout;
 }
 
 #ifdef CHAT_FULLCHAT
